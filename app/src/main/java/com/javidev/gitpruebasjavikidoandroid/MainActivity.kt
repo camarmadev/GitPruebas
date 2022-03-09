@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String) {
     Column(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
