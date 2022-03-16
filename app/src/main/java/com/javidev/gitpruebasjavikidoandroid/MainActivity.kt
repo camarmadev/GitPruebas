@@ -41,6 +41,7 @@ fun Greeting(name: String) {
     ) {
 
         Text(text = "Hello $name!", modifier = Modifier.background(Color.LightGray))
+        Text(text = "otro text $name!", modifier = Modifier.background(Color.LightGray))
 
         Button(onClick = { /*TODO*/ }) {
             Text(text = "Boton azul", color = Color.Black)
