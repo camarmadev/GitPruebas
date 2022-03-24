@@ -40,7 +40,11 @@ fun Greeting(name: String) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Text(text = "Hello $name!", modifier = Modifier.background(Color.LightGray))
+        Text(
+            text = "Hello $name!",
+            modifier = Modifier.background(Color.LightGray),
+            style = MaterialTheme.typography.h3
+        )
         Text(text = "otro text $name!", modifier = Modifier.background(Color.LightGray))
 
         Button(onClick = { /*TODO*/ }) {
