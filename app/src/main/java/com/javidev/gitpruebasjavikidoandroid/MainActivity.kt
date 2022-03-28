@@ -51,6 +51,15 @@ fun Greeting(name: String) {
             Text(text = "Branch master", color = Color.Black)
         }
 
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "Branch uno", color = Color.Green)
+        }
+
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "Branch dos", color = Color.Yellow)
+        }
+
+
     }
 }
 
