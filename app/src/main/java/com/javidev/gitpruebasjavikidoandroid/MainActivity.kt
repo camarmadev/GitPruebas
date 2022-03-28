@@ -51,6 +51,10 @@ fun Greeting(name: String) {
             Text(text = "Boton azul", color = Color.Black)
         }
 
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "Boton uno", color = Color.Black)
+        }
+
     }
 }
 
