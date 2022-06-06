@@ -22,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -44,17 +45,18 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String) {
     Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceEvenly,
-        horizontalAlignment = Alignment.CenterHorizontally
+            modifier = Modifier.fillMaxSize().background(Color.Yellow),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Imagen()
         Image2()
+        Imagen3()
 
         Text(
-            text = "Hello $name!",
-            modifier = Modifier.background(Color.LightGray),
-            style = MaterialTheme.typography.h3
+                text = "Hello $name!",
+                modifier = Modifier.background(Color.LightGray),
+                style = MaterialTheme.typography.h3
         )
         Text(text = "otro text $name!", modifier = Modifier.background(Color.LightGray))
 
@@ -71,29 +73,29 @@ fun Greeting(name: String) {
 @Composable
 fun Imagen() {
     Surface(
-        modifier = Modifier
-            .size(100.dp)
-            .padding(3.dp),
-        shape = RoundedCornerShape(12.dp)
-        ,
-        elevation = 4.dp
+            modifier = Modifier
+                .size(150.dp)
+                .padding(3.dp),
+            shape = RoundedCornerShape(12.dp),
+            elevation = 4.dp
     ) {
-            Image(
+        Image(
                 modifier = Modifier
                     .border(BorderStroke(3.dp, Color.Black), CircleShape),
-                painter = painterResource (id = R.drawable.logo_seguridad),
+                painter = painterResource(id = R.drawable.logo_seguridad),
                 contentDescription = "icono de la app",
-            )
+        )
     }
 }
 
 @Composable
 fun Image2() {
-        Image(
+    Image(
             modifier = Modifier
-                .size(60.dp)
-                .border(BorderStroke(2.dp, Color.Red),CircleShape ),
+                .size(160.dp)
+                .border(BorderStroke(2.dp, Color.Red), RoundedCornerShape(12.dp)),
             painter = painterResource(id = R.drawable.logo_seguridad),
+            contentScale = ContentScale.Crop,
             contentDescription = "icono dos",
 
             )
@@ -101,8 +103,21 @@ fun Image2() {
 
 }
 
+// uso el surface para no usar los parametros de la imagen y darle la foorma redonda
+@Composable
+fun Imagen3() {
+    Surface(shape = CircleShape, border = BorderStroke(1.dp,Color.Black)
+    ) {
+        Image(modifier = Modifier.size(190.dp),
+                painter = painterResource(id = R.drawable.logo_seguridad),
+                contentDescription = null
+        )
+    }
 
-@Preview(showBackground = true)
+}
+
+
+@Preview(showBackground = false)
 @Composable
 fun GrettinPrev() {
     Greeting(name = "ejemplo previu")
