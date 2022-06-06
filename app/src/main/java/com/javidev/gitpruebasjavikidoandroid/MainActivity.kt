@@ -61,6 +61,9 @@ fun Greeting(name: String) {
         Button(onClick = { /*TODO*/ }) {
             Text(text = "Branch master", color = Color.Black)
         }
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "Branch rebase", color = Color.Black)
+        }
     }
 }
 
@@ -89,7 +92,7 @@ fun Image2() {
         Image(
             modifier = Modifier
                 .size(60.dp)
-                .border(BorderStroke(2.dp, Color.Red),RoundedCornerShape(12.dp) ),
+                .border(BorderStroke(2.dp, Color.Red),CircleShape ),
             painter = painterResource(id = R.drawable.logo_seguridad),
             contentDescription = "icono dos",
 
