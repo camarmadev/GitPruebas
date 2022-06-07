@@ -59,6 +59,8 @@ fun Greeting(name: String) {
                 style = MaterialTheme.typography.h3
         )
         Text(text = "otro text $name!", modifier = Modifier.background(Color.LightGray))
+        Text(text = "otro text $name!", modifier = Modifier.background(Color.LightGray))
+        Text(text = "rama stash $name!", modifier = Modifier.background(Color.LightGray))
 
         Button(onClick = { /*TODO*/ }) {
             Text(text = "Branch master", color = Color.Black)
