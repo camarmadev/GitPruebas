@@ -92,10 +92,9 @@ fun Imagen() {
 fun Image2() {
     Image(
             modifier = Modifier
-                .size(160.dp)
-                .border(BorderStroke(2.dp, Color.Red), RoundedCornerShape(12.dp)),
+                .border(BorderStroke(1.dp,Color.Black), CircleShape).size(150.dp),
             painter = painterResource(id = R.drawable.logo_seguridad),
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.Fit,
             contentDescription = "icono dos",
 
             )
