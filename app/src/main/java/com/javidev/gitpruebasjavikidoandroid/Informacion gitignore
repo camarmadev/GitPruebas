@@ -1,0 +1,10 @@
+a veces no hace caso porque los archivos ya estan siendo seguidos "creo"
+ejecuta:
+
+git rm --cached nombreArchivo
+git add .
+
+o esto:
+
+git rm -r --cached .
+git add .
