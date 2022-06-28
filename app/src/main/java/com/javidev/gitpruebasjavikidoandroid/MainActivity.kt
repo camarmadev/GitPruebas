@@ -56,9 +56,7 @@ fun Greeting(name: String) {
         Button(onClick = { /*TODO*/ }) {
             Text(text = "Branch master", color = Color.Black)
         }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Branch rebase", color = Color.Black)
-        }
+
     }
 }
 
