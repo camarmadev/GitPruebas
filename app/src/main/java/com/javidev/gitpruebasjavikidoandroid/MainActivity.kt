@@ -53,21 +53,10 @@ fun Greeting(name: String) {
         Image2()
         Imagen3()
 
-        Text(
-                text = "Hello $name!",
-                modifier = Modifier.background(Color.LightGray),
-                style = MaterialTheme.typography.h3
-        )
-        Text(text = "otro text $name!", modifier = Modifier.background(Color.LightGray))
-        Text(text = "otro text $name!", modifier = Modifier.background(Color.LightGray))
-        Text(text = "rama stash $name!", modifier = Modifier.background(Color.LightGray))
-
         Button(onClick = { /*TODO*/ }) {
             Text(text = "Branch master", color = Color.Black)
         }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Branch rebase", color = Color.Black)
-        }
+
     }
 }
 
