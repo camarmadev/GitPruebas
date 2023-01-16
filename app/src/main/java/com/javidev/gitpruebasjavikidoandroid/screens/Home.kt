@@ -18,14 +18,19 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.javidev.gitpruebasjavikidoandroid.R
+import com.javidev.gitpruebasjavikidoandroid.navigation.Screens
 import com.javidev.gitpruebasjavikidoandroid.ui.theme.GitPruebasJavikidoAndroidTheme
 
 
 @Composable
-fun Greeting(name: String) {
+fun Greeting(name: String,controller: NavController) {
     Column(
-            modifier = Modifier.fillMaxSize().background(Color.Yellow),
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Yellow),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -45,8 +50,12 @@ fun Greeting(name: String) {
         Button(onClick = { /*TODO*/ }) {
             Text(text = "Branch master", color = Color.Black)
         }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Branch master", color = Color.Black)
+        Button(onClick = {
+            controller.navigate(Screens.LitMediaItem.route){
+                popUpTo(Screens.Home.route)
+            }
+        }) {
+            Text(text = "Siguiente pantalla", color = Color.Black)
         }
 
     }
@@ -75,7 +84,8 @@ fun Imagen() {
 fun Image2() {
     Image(
             modifier = Modifier
-                .border(BorderStroke(1.dp, Color.Black), CircleShape).size(150.dp),
+                .border(BorderStroke(1.dp, Color.Black), CircleShape)
+                .size(150.dp),
             painter = painterResource(id = com.javidev.gitpruebasjavikidoandroid.R.drawable.logo_seguridad),
             contentScale = ContentScale.Fit,
             contentDescription = "icono dos",
@@ -102,7 +112,8 @@ fun Imagen3() {
 @Preview(showBackground = false)
 @Composable
 fun GrettinPrev() {
-    Greeting(name = "ejemplo previu")
+    val controller= rememberNavController()
+    Greeting(name = "ejemplo previu",controller)
 }
 
 //@Preview(showBackground = true)
@@ -115,8 +126,9 @@ fun preImagen() {
 //@Preview()
 @Composable
 fun DefaultPreview() {
+    val controller= rememberNavController()
     GitPruebasJavikidoAndroidTheme {
-        Greeting("Android")
+        Greeting("Android",controller)
     }
 }
 

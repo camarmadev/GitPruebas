@@ -16,9 +16,9 @@ class MainActivity : ComponentActivity() {
             GitPruebasJavikidoAndroidTheme {
                 val controller = rememberNavController()
                 Surface(color = MaterialTheme.colors.background) {
-                    //Navigation()
+                    Navigation()
                     //Home2(controller = controller)
-                    ListMediaItem()
+                   // ListMediaItem()
                 }
             }
         }
