@@ -38,18 +38,7 @@ fun Greeting(name: String,controller: NavController) {
         Image2()
         Imagen3()
 
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Branch master", color = Color.Black)
-        }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Branch master", color = Color.Black)
-        }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Branch master", color = Color.Black)
-        }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Branch master", color = Color.Black)
-        }
+
         Button(onClick = {
             controller.navigate(Screens.LitMediaItem.route){
                 popUpTo(Screens.Home.route)
