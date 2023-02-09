@@ -43,14 +43,16 @@ fun Home2(controller: NavController, item: MediaItem,modifier: Modifier = Modifi
                        contentScale = ContentScale.Crop,
             )
 
-            if (item.tipo == MediaItem.Type.VIDEO)
-            Icon(imageVector = Icons.Default.PlayCircleOutline,
-                 contentDescription = null,
-                 tint = Color.White,
-                 modifier = Modifier
-                     .size(58.dp)
-                     .align(Alignment.Center)
-            )
+            if (item.tipo == MediaItem.Type.VIDEO){
+                Icon(imageVector = Icons.Default.PlayCircleOutline,
+                     contentDescription = null,
+                     tint = Color.White,
+                     modifier = Modifier
+                         .size(58.dp)
+                         .align(Alignment.Center)
+                )
+
+            }
         }
         Box(
                 modifier = Modifier

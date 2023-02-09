@@ -7,6 +7,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.navigation.compose.rememberNavController
 import com.javidev.gitpruebasjavikidoandroid.screens.ListMediaItem
+import com.javidev.gitpruebasjavikidoandroid.screens.visibilityViewModel
 import com.javidev.gitpruebasjavikidoandroid.ui.theme.GitPruebasJavikidoAndroidTheme
 
 class MainActivity : ComponentActivity() {
@@ -15,8 +16,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             GitPruebasJavikidoAndroidTheme {
                 val controller = rememberNavController()
+                val vm = visibilityViewModel()
                 Surface(color = MaterialTheme.colors.background) {
-                    Navigation()
+                    Navigation(vm)
                     //Home2(controller = controller)
                    // ListMediaItem()
                 }
