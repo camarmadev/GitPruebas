@@ -1,9 +1,6 @@
 package com.javidev.gitpruebasjavikidoandroid.screens
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,11 +10,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.javidev.gitpruebasjavikidoandroid.R
@@ -26,7 +27,7 @@ import com.javidev.gitpruebasjavikidoandroid.ui.theme.GitPruebasJavikidoAndroidT
 
 
 @Composable
-fun Greeting(name: String,controller: NavController) {
+fun Greeting(name: String,controller: NavController,vm: visibilityViewModel) {
     Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -36,7 +37,10 @@ fun Greeting(name: String,controller: NavController) {
     ) {
         Imagen()
         Image2()
-        Imagen3()
+        Imagen3(vm.visibility.value){
+            vm.onChangeVisibility()
+        }
+        ImageOnly()
 
 
         Button(onClick = {
@@ -50,7 +54,7 @@ fun Greeting(name: String,controller: NavController) {
     }
 }
 
-
+// usando el surface sin tocar la forma de la imagen
 @Composable
 fun Imagen() {
     Surface(
@@ -69,14 +73,15 @@ fun Imagen() {
     }
 }
 
+// usando una imagen solo sin surface
 @Composable
 fun Image2() {
     Image(
             modifier = Modifier
-                .border(BorderStroke(1.dp, Color.Black), CircleShape)
-                .size(150.dp),
-            painter = painterResource(id = com.javidev.gitpruebasjavikidoandroid.R.drawable.logo_seguridad),
-            contentScale = ContentScale.Fit,
+                .size(100.dp)
+                .border(BorderStroke(1.dp, Color.Black), CircleShape),
+            painter = painterResource(id = R.drawable.logo_seguridad),
+            contentScale = ContentScale.Crop,
             contentDescription = "icono dos",
 
             )
@@ -84,15 +89,35 @@ fun Image2() {
 
 }
 
+
+@Composable
+fun ImageOnly() {
+    // uso el clip de modifier pero es importante el contentScale
+    Image(
+            painter = painterResource(id = R.drawable.logo_seguridad),
+            contentDescription = null,
+            modifier = Modifier
+                .size(100.dp)
+                .clip(CircleShape)
+                .border(border = BorderStroke(2.dp, color = Color.Red), CircleShape),
+            contentScale = ContentScale.Crop
+            )
+}
+
 // uso el surface para no usar los parametros de la imagen y darle la foorma redonda
 @Composable
-fun Imagen3() {
+fun Imagen3(visibility: Boolean,onclick: ()-> Unit) {
     Surface(shape = CircleShape, border = BorderStroke(1.dp, Color.Black)
     ) {
-        Image(modifier = Modifier.size(190.dp),
-              painter = painterResource(id = com.javidev.gitpruebasjavikidoandroid.R.drawable.logo_seguridad),
-              contentDescription = null
-        )
+        if (visibility){
+            Image(modifier = Modifier
+                .size(100.dp)
+                .clickable { onclick() },
+                  painter = painterResource(id = R.drawable.logo_seguridad),
+                  contentDescription = null
+            )
+        }
+
     }
 
 }
@@ -102,7 +127,8 @@ fun Imagen3() {
 @Composable
 fun GrettinPrev() {
     val controller= rememberNavController()
-    Greeting(name = "ejemplo previu",controller)
+    val vm: visibilityViewModel = viewModel<visibilityViewModel>()
+    Greeting(name = "ejemplo previu",controller,vm)
 }
 
 //@Preview(showBackground = true)
@@ -112,12 +138,13 @@ fun preImagen() {
 }
 
 
-//@Preview()
+@Preview()
 @Composable
 fun DefaultPreview() {
     val controller= rememberNavController()
+    val vm: visibilityViewModel = viewModel<visibilityViewModel>()
     GitPruebasJavikidoAndroidTheme {
-        Greeting("Android",controller)
+        Greeting("Android",controller,vm)
     }
 }
 
